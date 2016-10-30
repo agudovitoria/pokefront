@@ -22,7 +22,7 @@
             </div>
 
             <div class="col-xs-2 text-right">
-                <span ng-if="!editing" class="glyphicon padded clickable" ng-class="{'glyphicon-star' : pokemonData.favorite, 'glyphicon-star-empty' : !pokemonData.favorite}"></span>
+                <span ng-if="!editing" class="glyphicon padded clickable" ng-class="{'glyphicon-star' : pokemonData.favorite, 'glyphicon-star-empty' : !pokemonData.favorite}" ng-click="ctrl.toggleFavorite(pokemonData)"></span>
                 <span ng-if="!editing" class="glyphicon glyphicon-pencil padded clickable" ng-click="ctrl.open()"></span>
                 <span ng-if="!editing" class="glyphicon glyphicon-trash padded clickable" ng-click="ctrl.delete(pokemonData.name)"></span>
                 <button ng-if="editing" class="btn btn-sm btn-success" ng-click="ctrl.modify(pokemonData)">

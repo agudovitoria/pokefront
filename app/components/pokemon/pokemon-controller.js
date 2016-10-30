@@ -45,9 +45,41 @@
                 _modelToInput();
                 _toggleEditing();
             } else {
-                $log.error(response.message);
+                Notification.error(response.message);
             }
         }
+
+        function _responseFavoriteSuccess(response) {
+            if (angular.isDefined(response.error) && response.error === false) {
+                $scope.pokemonData.favorite = !$scope.pokemonData.favorite;
+                Notification.success('Pokemon modificado');
+            } else {
+                Notification.error(response.message);
+            }
+        }
+
+        function _toggleFavorite(pokemon) {
+            if(pokemon.favorite) {
+                pokemonService.unsetFavorite(pokemon.name)
+                    .then(_responseFavoriteSuccess)
+                    .catch(_responseFail);
+            } else {
+                pokemonService.setFavorite(pokemon.name)
+                    .then(_responseFavoriteSuccess)
+                    .catch(_responseFail);
+            }
+        }
+
+        function _responseModifySuccess(response) {
+            if (angular.isDefined(response.error) && response.error === false) {
+                Notification.success('Pokemon modificado');
+                _modelToInput();
+                _toggleEditing();
+            } else {
+                Notification.error(response.message);
+            }
+        }
+
         function _modify(pokemon) {
             pokemonService.modify(pokemon)
                 .then(_responseModifySuccess)
@@ -59,7 +91,7 @@
                 // Emit 'deletePokemonFromList' event to delete pokemon from list
                 $rootScope.$broadcast('deletePokemonFromList', {name: _deletingRowName});
             } else {
-                $log.error(response.message);
+                Notification.error(response.message);
             }
         }
 
@@ -77,6 +109,7 @@
 
         this.modify = _modify;
         this.delete = _delete;
+        this.toggleFavorite = _toggleFavorite;
         this.open = _toggleEditing;
         this.cancel = _toggleEditing;
     }
