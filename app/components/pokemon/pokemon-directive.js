@@ -8,6 +8,7 @@ angular.module('pokefrontApp.myPokemons.pokemon')
                 pokemonData : '='
             },
             templateUrl: 'components/pokemon/pokemon-tpl.html',
-            controller: 'pokemonCtrl'
+            controller: 'pokemonCtrl',
+            controllerAs: 'ctrl'
         };
     });

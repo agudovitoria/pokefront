@@ -8,7 +8,43 @@
 <h2>My pokemon list</h2>
 <div class="row">
     <div class="col-xs-12">
-        <pokemon ng-repeat="pokemon in model.pokemons" pokemon-data="pokemon"></pokemon>
+        <div class="row pokemons-header">
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <span>Nombre</span>
+                    </div>
+                    <div class="col-xs-2">
+                        <span>Tipo</span>
+                    </div>
+                    <div class="col-xs-4">
+                        <span>Descripci&oacute;n</span>
+                    </div>
+                    <div class="col-xs-2">
+                        <span>Evoluci&oacute;n</span>
+                    </div>
+                    <div class="col-xs-2 text-right">
+                        <span ng-show="filter.byFavorite"
+                              ng-click="filter.byFavorite=!filter.byFavorite">Favoritos</span>
+                        <span ng-show="!filter.byFavorite" ng-click="filter.byFavorite=!filter.byFavorite">Todos</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-2">
+                        <input type="text" class="form-control input-sm" name="filterName" ng-model="filter.byName">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <pokemon ng-if="model.pokemons"
+                 ng-repeat="pokemon in model.pokemons  | filter : {name: filter.byName} | favorites : filter.byFavorite"
+                 pokemon-data="pokemon"
+                 pokemon-modify="myCtrl.modifyPokemon(pokemon)"
+                 pokemon-delete="myCtrl.deletePokemon(name)"></pokemon>
     </div>
 </div>
 </body>

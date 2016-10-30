@@ -14,9 +14,9 @@
             .state('myPokedex', {
                 url: '/myPokedex',
                 templateUrl: 'myPokemons/my-pokemons-tpl.html',
-                controller: 'myPokemonsCtrl',
+                controller: 'myPokemonsCtrl as myCtrl',
                 resolve: {
-                    myPokemonsResponse: function (myPokemonsService) {
+                    myPokemons: function (myPokemonsService) {
                         return myPokemonsService.getAll();
                     }
                 }
