@@ -1,0 +1,18 @@
+div.pokemon {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    background-color: grey;
+    border-radius: 4px;
+    color: white;
+}
+
+span.padded {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+span.clickable:hover {
+    cursor:pointer;
+    color: #d58512;
+}

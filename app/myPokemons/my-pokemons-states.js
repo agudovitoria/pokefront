@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     /**
@@ -16,16 +16,9 @@
                 templateUrl: 'myPokemons/my-pokemons-tpl.html',
                 controller: 'myPokemonsCtrl',
                 resolve: {
-                    // myPokemons: function(loginService, userService, $state, NAVIGATION_CONFIG) {
-                    //     var goToDashboard = function(response) {
-                    //         if (response.status === true) {
-                    //             $state.go(NAVIGATION_CONFIG.DashboardState.name);
-                    //         }
-                    //     };
-                    //
-                    //     return loginService.isLogged()
-                    //         .then(goToDashboard);
-                    // }
+                    myPokemonsResponse: function (myPokemonsService) {
+                        return myPokemonsService.getAll();
+                    }
                 }
             });
 

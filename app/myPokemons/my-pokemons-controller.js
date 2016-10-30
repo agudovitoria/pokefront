@@ -9,11 +9,24 @@
      * Controller of pokedex main page
      */
 
-    function myPokemonsCtrl($log, $scope) {
+    function myPokemonsCtrl($log, $scope, myPokemonsResponse) {
+        function myPokemonsFail(error) {
+            $log.error('myPokemons response error', error);
+        }
+
         $log.log('========== Loaded myPokemonsCtrl ==========');
-        $scope.model = {};
+        $scope.model = {
+            pokemons: []
+        };
+
+        if (angular.isDefined(myPokemonsResponse) &&
+            angular.isDefined(myPokemonsResponse.data) &&
+            angular.isDefined(myPokemonsResponse.error) &&
+            myPokemonsResponse.error === false) {
+            $scope.model.pokemons = myPokemonsResponse.data;
+        }
     }
 
     angular.module('pokefrontApp.myPokemons')
-        .controller('myPokemonsCtrl', myPokemonsCtrl);
+        .controller('myPokemonsCtrl', ['$log', '$scope', 'myPokemonsResponse', myPokemonsCtrl]);
 }());

@@ -5,6 +5,11 @@
     <title>My Pokemons</title>
 </head>
 <body>
-    <h2>Here goes my pokemon list</h2>
+<h2>My pokemon list</h2>
+<div class="row">
+    <div class="col-xs-12">
+        <pokemon ng-repeat="pokemon in model.pokemons" pokemon-data="pokemon"></pokemon>
+    </div>
+</div>
 </body>
 </html>
