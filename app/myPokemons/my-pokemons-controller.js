@@ -9,7 +9,7 @@
      * Controller of pokedex main page
      */
 
-    function myPokemonsCtrl($log, $rootScope, $scope, $filter, myPokemonsService, myPokemons) {
+    function myPokemonsCtrl($log, $rootScope, $scope, $filter, myPokemonsService, myPokemons, Notification) {
         $log.log('========== Loaded myPokemonsCtrl ==========');
 
         // Delete one row when 'deletePokemonFromList' event is triggered and captured
@@ -21,6 +21,7 @@
                 pos = $scope.model.pokemons.indexOf(row);
                 if(pos >= 0) {
                     $scope.model.pokemons.splice(pos, 1);
+                    Notification.success('Pokemon borrado');
                 }
             }
         }
@@ -55,5 +56,5 @@
     }
 
     angular.module('pokefrontApp.myPokemons')
-        .controller('myPokemonsCtrl', ['$log', '$rootScope', '$scope', '$filter', 'myPokemonsService', 'myPokemons', myPokemonsCtrl]);
+        .controller('myPokemonsCtrl', ['$log', '$rootScope', '$scope', '$filter', 'myPokemonsService', 'myPokemons', 'Notification', myPokemonsCtrl]);
 }());

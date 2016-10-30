@@ -9,7 +9,7 @@
      * Controller of pokemon component
      */
 
-    function pokemonCtrl($log, $rootScope, $scope, pokemonService) {
+    function pokemonCtrl($log, $rootScope, $scope, pokemonService, Notification) {
         var _deletingRowName = null;
         $log.log('========== Loaded pokemonCtrl ==========');
 
@@ -41,6 +41,7 @@
 
         function _responseModifySuccess(response) {
             if (angular.isDefined(response.error) && response.error === false) {
+                Notification.success('Pokemon modificado');
                 _modelToInput();
                 _toggleEditing();
             } else {
@@ -81,5 +82,5 @@
     }
 
     angular.module('pokefrontApp.myPokemons.pokemon')
-        .controller('pokemonCtrl', ['$log', '$rootScope', '$scope', 'pokemonService', pokemonCtrl]);
+        .controller('pokemonCtrl', ['$log', '$rootScope', '$scope', 'pokemonService', 'Notification', pokemonCtrl]);
 }());
