@@ -8,12 +8,14 @@
             </div>
 
             <div class="col-xs-1">
-                <span ng-bind="pokemonData.types[0]"></span>
-                <span ng-if="editing" class="glyphicon glyphicon-th-list left-padded" ng-click="ctrl.selectType(0)"></span>
+                <span ng-bind="pokemonData.types[0]" ng-class="{'clickable' : editing}" ng-click="ctrl.selectType(0)"></span>
+                <span ng-if="editing && pokemonData.types[0] && pokemonData.types[1]" class="glyphicon glyphicon-remove left-padded clickable" ng-click="ctrl.deleteType(0)"></span>
+                <span ng-if="editing && !pokemonData.types[0]" class="glyphicon glyphicon-plus-sign clickable" ng-click="ctrl.selectType(0)"></span>
             </div>
             <div class="col-xs-1">
-                <span ng-bind="pokemonData.types[1]"></span>
-                <span ng-if="editing" class="glyphicon glyphicon-th-list left-padded" ng-click="ctrl.selectType(1)"></span>
+                <span ng-bind="pokemonData.types[1]" ng-class="{'clickable' : editing}" ng-click="ctrl.selectType(1)"></span>
+                <span ng-if="editing && pokemonData.types[1] && pokemonData.types[0]" class="glyphicon glyphicon-remove clickable" ng-click="ctrl.deleteType(1)"></span>
+                <span ng-if="editing && !pokemonData.types[1]" class="glyphicon glyphicon-plus-sign clickable" ng-click="ctrl.selectType(1)"></span>
             </div>
 
             <div class="col-xs-4">

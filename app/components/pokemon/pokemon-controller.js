@@ -111,6 +111,10 @@
             });
         }
 
+        function _deleteType(pos) {
+            $scope.pokemonData.types[pos] = null;
+        }
+
         $scope.editing = false;
         $scope.validationRules = VALIDATIONS;
         $scope.model = {};
@@ -123,6 +127,7 @@
         this.open = _toggleEditing;
         this.cancel = _toggleEditing;
         this.selectType = _selectType;
+        this.deleteType = _deleteType;
     }
 
     angular.module('pokefrontApp.myPokemons.pokemon')

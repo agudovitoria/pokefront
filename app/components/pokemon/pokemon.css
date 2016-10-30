@@ -12,6 +12,14 @@ span.padded {
     padding-right: 5px;
 }
 
+span.left-padded {
+    padding-left: 5px;
+}
+
+span.right-padded {
+    padding-right: 5px;
+}
+
 span.clickable:hover {
     cursor:pointer;
     color: #d58512;
