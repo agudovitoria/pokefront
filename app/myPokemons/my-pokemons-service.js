@@ -36,11 +36,13 @@
 
                 function _openModal() {
                     _modal = $uibModal.open({
-                        templateUrl: 'src/public/signin/signin-view.html',
-                        controller: 'SignInCtrl',
-                        size: 'md',
+                        templateUrl: 'components/pokemon/modal/types-tpl.html',
+                        controller: 'typesCtrl',
+                        size: 'sm',
                         appendTo: _appendToElement,
-                        resolve: {}
+                        resolve: {
+                            type: null
+                        }
                     });
                 }
 

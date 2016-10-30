@@ -18,53 +18,16 @@
             fields: {
                 users: {
                     name: {
-                        required: false,
+                        required: true,
                         minlength: 1,
                         maxlength: 30,
-                        pattern: '[a-zñA-ZÑ][a-zñA-ZÑ\.\,]*[a-zñA-ZÑ]'
+                        pattern: '[a-zñA-ZÑ][a-zñA-ZÑ0-9 ]+[a-zñA-ZÑ]?'
                     },
-                    firstSurname: {
-                        required: false,
-                        minlength: 1,
-                        maxlength: 30,
-                        pattern: '[a-zñA-ZÑ][a-zñA-ZÑ\.\,]*[a-zñA-ZÑ]'
-                    },
-                    secondSurname: {
-                        required: false,
-                        minlength: 1,
-                        maxlength: 30,
-                        pattern: '[a-zñA-ZÑ][a-zñA-ZÑ\.\,]*[a-zñA-ZÑ]'
-                    },
-                    email: {
+                    description: {
                         required: true,
-                        minlength: 8,
-                        maxlength: 60,
-                        pattern: '[a-zA-ZÑ][a-zA-Z0-9\.\-\_]+[a-zA-Z0-9]\@[a-zA-Z][a-zA-Z0-9\.\-\_]+[a-zA-Z0-9]\.[a-zA-Z]{2,3}'
-                    },
-                    phoneNumber: {
-                        required: false,
-                        minlength: 9,
-                        maxlength: 9,
-                        pattern: '[6|9][0-9]{8}'
-                    },
-                    level: {
-                        required: true,
-                        minlength: '',
-                        maxlength: '',
-                        pattern: ''
-                    },
-                    login: {
-                        required: true,
-                        minlength: 6,
-                        maxlength: 50,
-                        pattern: '[a-zñA-ZÑ][a-zñA-ZÑ0-9\-\_\.]*[a-zñA-ZÑ0-9]'
-                    },
-                    password: {
-                        required: true,
-                        minlength: 6,
-                        maxlength: 15,
-                        pattern: '[a-zA-Z][a-zA-Z0-9\-\_]*[a-zA-Z0-9]'
-                    },
+                        minlength: 30,
+                        pattern: '[a-zñA-ZÑ][a-zñA-ZÑ0-9 ]+[a-zñA-ZÑ]?'
+                    }
                 }
             }
         });

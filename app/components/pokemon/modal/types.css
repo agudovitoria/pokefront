@@ -1,0 +1,10 @@
+div.typesModal {
+    background-color: #8c8c8c;
+    color: white;
+    font-weight: bold;
+}
+div.typesModal div.type:hover {
+    color: goldenrod;
+    background-color: #1b6d85;
+    cursor:pointer;
+}

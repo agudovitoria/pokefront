@@ -9,7 +9,7 @@
      * Controller of pokemon component
      */
 
-    function pokemonCtrl($log, $rootScope, $scope, pokemonService, Notification) {
+    function pokemonCtrl($log, $rootScope, $scope, pokemonService, Notification, VALIDATIONS) {
         var _deletingRowName = null;
         $log.log('========== Loaded pokemonCtrl ==========');
 
@@ -102,7 +102,17 @@
                 .catch(_responseFail);
         }
 
+        function _selectType(pos) {
+            pokemonService.openModal().result.then(function (type) {
+                console.log('Seleccionado tipo: ' + type);
+                $scope.pokemonData.types[pos] = type;
+            }, function () {
+                $log.info('modal cerrado');
+            });
+        }
+
         $scope.editing = false;
+        $scope.validationRules = VALIDATIONS;
         $scope.model = {};
 
         _inputToModel(); // First copy from input pokemon data to auxiliar model
@@ -112,8 +122,9 @@
         this.toggleFavorite = _toggleFavorite;
         this.open = _toggleEditing;
         this.cancel = _toggleEditing;
+        this.selectType = _selectType;
     }
 
     angular.module('pokefrontApp.myPokemons.pokemon')
-        .controller('pokemonCtrl', ['$log', '$rootScope', '$scope', 'pokemonService', 'Notification', pokemonCtrl]);
+        .controller('pokemonCtrl', ['$log', '$rootScope', '$scope', 'pokemonService', 'Notification', 'VALIDATIONS', pokemonCtrl]);
 }());
