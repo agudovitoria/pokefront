@@ -12,7 +12,7 @@
     angular
         .module('pokefrontApp')
         .constant('REST_CONFIG', {
-            'BaseUrl': 'http://127.0.0.1:8080'
+            'BaseUrl': 'http://127.0.0.1:8080/pokedex'
         })
         .constant('VALIDATIONS', {
             name: {
