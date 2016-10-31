@@ -1,0 +1,96 @@
+<div class="row pokemon">
+    <form novalidate name="createPokemonForm">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-2">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <input class="form-control input-sm"
+                                   name="pokemonName"
+                                   ng-model="pokemonData.name"
+                                   ng-required="validationRules.name.required"
+                                   ng-minlength="validationRules.name.minlength"
+                                   ng-maxlength="validationRules.name.maxlength">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <span class="label label-danger"
+                                  ng-if="createPokemonForm.pokemonName.$touched && createPokemonForm.pokemonName.$error.required">El nombre es obligatorio</span>
+                            <span class="label label-danger"
+                                  ng-if="createPokemonForm.pokemonName.$touched && createPokemonForm.pokemonName.$error.pattern">El nombre solo puede contener caracteres alfanuméricos</span>
+                            <span class="label label-danger"
+                                  ng-if="createPokemonForm.pokemonName.$touched && createPokemonForm.pokemonName.$error.minlength">El nombre debe tener al menos {{validationRules.name.minlength}} caracteres</span>
+                            <span class="label label-danger"
+                                  ng-if="createPokemonForm.pokemonName.$touched && createPokemonForm.pokemonName.$error.maxlength">El nombre debe tener como máximo {{validationRules.name.maxlength}} caracteres</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-2">
+                    <div class="row">
+                        <div class="col-xs-6">
+                    <span ng-bind="pokemonData.types[0]" ng-class="{'clickable' : editing}"
+                          ng-click="ctrl.selectType(0)"></span>
+                            <span ng-if="pokemonData.types[0] && pokemonData.types[1]"
+                                  class="glyphicon glyphicon-remove left-padded clickable"
+                                  ng-click="ctrl.deleteType(0)"></span>
+                            <span ng-if="!pokemonData.types[0]" class="glyphicon glyphicon-plus-sign clickable"
+                                  ng-click="ctrl.selectType(0)"></span>
+                        </div>
+                        <div class="col-xs-6">
+                    <span ng-bind="pokemonData.types[1]" ng-class="{'clickable' : editing}"
+                          ng-click="ctrl.selectType(1)"></span>
+                            <span ng-if="pokemonData.types[1] && pokemonData.types[0]"
+                                  class="glyphicon glyphicon-remove clickable" ng-click="ctrl.deleteType(1)"></span>
+                            <span ng-if="!pokemonData.types[1]" class="glyphicon glyphicon-plus-sign clickable"
+                                  ng-click="ctrl.selectType(1)"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <span class="label label-danger"
+                                  ng-if="createPokemonForm.$submitted && !pokemonData.type[0] && !pokemonData.type[1]">Debes seleccionar un tipo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-4">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <input class="form-control input-sm"
+                                   name="pokemonDescription"
+                                   ng-model="pokemonData.description"
+                                   ng-required="validationRules.description.required"
+                                   ng-minlength="validationRules.description.minlength">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <span class="label label-danger"
+                                  ng-if="createPokemonForm.pokemonDescription.$touched && createPokemonForm.pokemonDescription.$error.required">Campo obligatorio</span>
+                            <span class="label label-danger"
+                                  ng-if="createPokemonForm.pokemonDescription.$touched && createPokemonForm.pokemonDescription.$error.pattern">Solo se permiten caracteres alfanuméricos</span>
+                            <span class="label label-danger"
+                                  ng-if="createPokemonForm.pokemonDescription.$touched && createPokemonForm.pokemonDescription.$error.minlength">Debe tener al menos {{validationRules.description.minlength}} caracteres</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-2">
+                    <input class="form-control input-sm" ng-model="pokemonData.evolution">
+                </div>
+
+                <div class="col-xs-2 text-right">
+                    <button class="btn btn-sm btn-success" ng-click="myCtrl.save()"
+                            ng-disabled="createPokemonForm.$invalid">
+                        <span class="glyphicon glyphicon-ok-circle"></span>
+                    </button>
+                    <button class="btn btn-sm btn-danger" ng-click="myCtrl.cancel()">
+                        <span class="glyphicon glyphicon-remove-circle"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

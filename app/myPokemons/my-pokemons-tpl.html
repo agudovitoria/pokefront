@@ -18,27 +18,27 @@
                         <span>Evoluci&oacute;n</span>
                     </div>
                     <div class="col-xs-2 text-right">
-                        <span ng-show="filter.byFavorite"
-                              ng-click="filter.byFavorite=!filter.byFavorite">Favoritos</span>
-                        <span ng-show="!filter.byFavorite" ng-click="filter.byFavorite=!filter.byFavorite">Todos</span>
+                        <span ng-click="filter.byFavorite=!filter.byFavorite" ng-bind="filter.byFavorite ? 'Favoritos' : 'Todos'"></span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-2">
                         <input type="text" class="form-control input-sm" name="filterName" ng-model="filter.byName">
                     </div>
+                    <div class="col-xs-10 text-right">
+                        <button class="btn btn-success" ng-click="myCtrl.create()" ng-hide="showCreateForm">Nuevo</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<ng-include src="'myPokemons/new-pokemon-tpl.html'" ng-if="showCreateForm" ng-controller="pokemonCtrl as ctrl"></ng-include>
+
 <div class="row">
     <div class="col-xs-12">
-        <pokemon ng-if="model.pokemons"
-                 ng-repeat="pokemon in model.pokemons  | filter : {name: filter.byName} | favorites : filter.byFavorite"
-                 pokemon-data="pokemon"
-                 pokemon-modify="myCtrl.modifyPokemon(pokemon)"
-                 pokemon-delete="myCtrl.deletePokemon(name)"></pokemon>
+        <pokemon ng-if="model.pokemons" ng-repeat="pokemon in model.pokemons  | filter : {name: filter.byName} | favorites : filter.byFavorite" pokemon-data="pokemon"></pokemon>
     </div>
 </div>
 <div class="row">

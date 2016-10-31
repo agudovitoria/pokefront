@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     /**
@@ -15,20 +15,16 @@
             'BaseUrl': 'http://127.0.0.1:8080'
         })
         .constant('VALIDATIONS', {
-            fields: {
-                users: {
-                    name: {
-                        required: true,
-                        minlength: 1,
-                        maxlength: 30,
-                        pattern: '[a-zñA-ZÑ][a-zñA-ZÑ0-9 ]+[a-zñA-ZÑ]?'
-                    },
-                    description: {
-                        required: true,
-                        minlength: 30,
-                        pattern: '[a-zñA-ZÑ][a-zñA-ZÑ0-9 ]+[a-zñA-ZÑ]?'
-                    }
-                }
+            name: {
+                required: true,
+                minlength: 4,
+                maxlength: 24,
+                pattern: '[a-zñA-ZÑ][a-zñA-ZÑ0-9 ]*'
+            },
+            description: {
+                required: true,
+                minlength: 30,
+                pattern: '[a-zñA-ZÑ][a-zñA-ZÑ0-9 ]*'
             }
         });
 }());

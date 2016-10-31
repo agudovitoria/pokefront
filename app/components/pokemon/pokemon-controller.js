@@ -15,6 +15,9 @@
 
         function _toggleEditing() {
             $scope.editing = !$scope.editing;
+            if(!$scope.isEditing) {
+                _inputToModel();
+            }
         }
 
         // Back auxiliar model data to input data (synchronize model)

@@ -27,8 +27,9 @@
                         .catch(_genericFail);
                 }
 
+                // Should be PUT but $resource doesn't support it natively, we'll use POST instead
                 function _add(pokemon) {
-                    return _resource.put({
+                    return _resource.save({
                         service: 'add'
                     }, pokemon).$promise
                         .catch(_genericFail);
